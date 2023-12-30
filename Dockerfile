@@ -8,4 +8,4 @@ COPY /target/*.jar ./webapp.jar
 EXPOSE 8081
 
 # Run the jar file
-CMD ["java", "-jar cfm", "webapp.jar", "manifest.txt", "-C" "webapp/", "."]
+CMD ["jar cfm", "webapp.jar", "manifest.txt", "-C" "webapp/", "."]
