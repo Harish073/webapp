@@ -1,11 +1,11 @@
-FROM techiescamp/jre-17:1.0.0
-WORKDIR /app
+# Use the Tomcat base image
+FROM tomcat:latest
 
-# Copy the JAR file (/app)
-COPY /target/*.jar ./webapp.jar
+# Copy your WAR file into the webapps directory of Tomcat
+COPY webapp.war /usr/local/tomcat/webapps/
 
-# Expose the port the app runs on
+# Expose port 8080 (default Tomcat port)
 EXPOSE 8081
 
-# Run the jar file
-CMD ["jar cfm", "webapp.jar", "manifest.txt", "-C" "webapp/", "."]
+# Start Tomcat when the container starts
+CMD ["catalina.sh", "run"]
